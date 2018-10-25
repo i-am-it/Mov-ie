@@ -1,0 +1,101 @@
+<!--Search bar-->
+<div class="nav" style="padding : 2px;">
+  <div style="display:flex;justify-content:space-between">
+    <a href="" style="text-decoration:none"><span id="head" class="">Mov-<span id="span-head">i.e.</span></span></a>
+    <div style="display:flex;">
+      <p *ngIf="name.value==='' && count !==0" class="err">*movie name can not be empty</p>
+      <input #name id="name" required placeholder="Enter Movie Name">
+      <button mat-button id="but" (click)=searchMovie(name.value)>Search</button>
+    </div>
+  </div>
+</div>
+<!--end of Search bar-->
+
+<!--Movies Section-->
+<div class="row">
+  <!--Movies' list-->
+  <div  class="col1 j">
+    <h3 style="text-align:center;">Movie List</h3>
+    <p class="err" *ngIf="data!==undefined && data.total_results===0">*OOPS! couldn't find the movie</p>
+    <div *ngFor = "let movie of movies" class="movie-list" (click) = findMovieById(movie.id)>
+      <div  class="row">
+        <div class="col1">
+          <img *ngIf="movie.poster_path!==null" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" style="height: 6.25rem;width: 100%">
+          <img *ngIf="movie.poster_path===null" src="./../../assets/noPoster.png" style="height: 6.25rem;width: 100%">
+        </div>
+        <div class="col2">
+          <span>{{movie.title}}</span>
+          <span>Rated {{movie.vote_average}}</span>
+          <span>Released On : {{movie.release_date}}</span>
+        </div>
+      </div>
+      <p class="desc">{{movie.overview}}</p>
+
+    </div>
+    <a *ngIf="pageNo<totalPages" (click)=nextPage(name.value)>More>></a>
+  </div>
+  <!--End of Movies' list-->
+
+  <!--Movie Details section-->
+  <div class="col2 movie-detail" style="height:84vh">
+      <h3 style="text-align:center;">Movie Detail</h3>
+    <div class="row" *ngIf = "movie!==undefined" style="display:flex;flex-direction:column;">
+				<div>
+					<h1 id="title">{{movie.title}}</h1>
+					<img id="moviePic"  *ngIf="movie.poster_path!==null" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+          <img id="moviePic"  *ngIf="movie.poster_path===null" src="./../../assets/noPoster.png">
+          <p id="plot">{{movie.overview}}</p>
+				</div>
+				<div id="movieD">
+            <div class="container">
+                <div class="row" *ngIf="movie.vote_average!==null">
+                  <div class="col">
+                    <span class="headin">Vote Average :</span> <span> {{movie.vote_average}}</span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.release_date!==null">
+                  <div class="col">
+                    <span class="headin">Released On :</span> <span> {{movie.release_date}}</span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.runtime!==null">
+                  <div class="col">
+                    <span class="headin">Runtime :</span> <span> {{movie.runtime}}</span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.genres[0]!==undefined">
+                  <div class="col">
+                    <span class="headin">Genre :</span> <span> <p *ngFor="let genre of movie.genres">{{genre.name}}</p></span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.spoken_languages[0]!==undefined">
+                  <div class="col">
+                    <span class="headin">Spoken Languages :</span> <span> <p *ngFor="let language of movie.spoken_languages">{{language.name}}</p></span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.imdb_id!==null">
+                  <div class="col">
+                    <span class="headin">imdbID :</span> <span> {{movie.imdb_id}}</span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.budget!==null">
+                  <div class="col">
+                    <span class="headin">Budget :</span> <span> {{movie.budget}}</span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.production_companies[0]!==undefined">
+                  <div class="col">
+                    <span class="headin">Production Companies :</span> <span> <p *ngFor="let company of movie.production_companies">{{company.name}}</p></span>
+                  </div>
+                </div>
+                <div class="row" *ngIf="movie.homepage!==null">
+                  <div class="col">
+                    <span class="headin">Homepage :</span> <span><a href="{{movie.homepage}}">{{movie.homepage}}</a></span>
+                  </div>
+                </div>
+              </div>
+				</div>
+		</div>
+  </div>
+  <!--End of Movie details section-->
+</div>
