@@ -1,0 +1,40 @@
+[debug] [2018-10-25T20:59:13.381Z] ----------------------------------------------------------------------
+[debug] [2018-10-25T20:59:13.384Z] Command:       /usr/bin/node /usr/bin/firebase init
+[debug] [2018-10-25T20:59:13.384Z] CLI Version:   5.1.1
+[debug] [2018-10-25T20:59:13.384Z] Platform:      linux
+[debug] [2018-10-25T20:59:13.384Z] Node Version:  v8.12.0
+[debug] [2018-10-25T20:59:13.384Z] Time:          Fri Oct 26 2018 02:29:13 GMT+0530 (IST)
+[debug] [2018-10-25T20:59:13.384Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-25T20:59:13.392Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-25T20:59:13.392Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/am_it/pro/mov-ie
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-10-25T20:59:27.895Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?page_size=100  
+ 
+[debug] [2018-10-25T20:59:29.548Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-25T20:59:29.838Z] TypeError: Cannot read property 'projectId' of undefined
+    at /usr/lib/node_modules/firebase-tools/lib/init/features/project.js:48:23
+    at arrayMap (/usr/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:639:23)
+    at Function.map (/usr/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9556:14)
+    at /usr/lib/node_modules/firebase-tools/lib/init/features/project.js:46:21
+    at <anonymous>
+    at process._tickDomainCallback (internal/process/next_tick.js:229:7)
+[error] 
+[error] Error: An unexpected error has occurred.
