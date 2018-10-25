@@ -9,12 +9,12 @@ import { AppService} from './../app.service'
 export class CommonComponent implements OnInit {
 
   //Variables
-  private movies:any[];
-  private movie;
-  private data;
-  private count =0;
-  private pageNo = 1;
-  private totalPages;
+  movies:any[];
+  movie;
+  data;
+  count =0;
+  pageNo = 1;
+  totalPages;
   constructor(public service : AppService) { }
 
   ngOnInit() {
